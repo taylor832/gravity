@@ -16,23 +16,32 @@ public class PendulumRunner {
 	double sLen = 10, pMass = 10, theta0 = Math.PI/30;
 	RegularPendulum rp = new RegularPendulum (sLen, pMass, theta0, delta,earth);
 	SimplePendulum sp = new SimplePendulum (sLen, pMass, theta0,earth);
-	RegularPendulum rpCoarse = 
-	    new RegularPendulum (sLen, pMass, theta0, .1,earth);
+	
 
 	// print out difference in displacement in 1 second intervals
 	// for 20 seconds
 	int iterations = (int) (1/delta);
 	System.out.println ("analytical vs. numerical displacement (fine, coarse)");
-	for (int second = 1; second <= 20; second++) {
+	for (int second = 1; second <= 10; second++) {
 	    for (int i = 0; i < iterations; i++) rp.step ();
-	    for (int i = 0; i < 10; i++) rpCoarse.step (); 
 	    System.out.println ("t=" + second + "s: \t" + 
 				nf.format (Math.toDegrees (sp.getTheta (second))) 
 				+ "\t" +
-				nf.format (Math.toDegrees (rp.getLastTheta ()))
-				+ "\t" + 
-				nf.format (Math.toDegrees (rpCoarse.getLastTheta ())));
+				nf.format (Math.toDegrees (rp.getLastTheta ())));
 	}
+	
+	System.out.println("Switching Gravity Constant from Earth to Jupiter");
+	GravityModel jupiter = new GravityConstant(25.0);
+	rp.setGravityModel(jupiter);
+	sp.setGravityModel(jupiter);
+	for (int second = 1; second <= 10; second++) {
+	    for (int i = 0; i < iterations; i++) rp.step ();
+	    System.out.println ("t=" + second + "s: \t" + 
+				nf.format (Math.toDegrees (sp.getTheta (second))) 
+				+ "\t" +
+				nf.format (Math.toDegrees (rp.getLastTheta ())));
+	}
+	
     }
 }
 

@@ -12,7 +12,6 @@ public class GravityConstant implements GravityModel {
 		}
 	}
 	public double getGravitationalField(){
-			return g;
-			
+			return g;		
 	}
 }
