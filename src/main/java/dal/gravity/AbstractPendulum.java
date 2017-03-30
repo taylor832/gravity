@@ -35,7 +35,6 @@ public abstract class AbstractPendulum {
     private boolean validDisplacement (double val) { return (val >= 0); }
     private boolean validPointMass (double val) { return (val > 0); }
     private boolean validStringLength (double val) { return (val > 0); }
-    private boolean validGC (double val) { return (val >= 0); }
 
     public double getMaxAngularDisplacement () { return theta0; }
 
@@ -44,5 +43,9 @@ public abstract class AbstractPendulum {
     public double getStringLength () { return stringLength; }
 
     public double getGravitationalField () { return gm.getGravitationalField(); }
+    
+    public void setGravityModel(GravityModel newGM){
+    	 this.gm = newGM;
+     }
 
 }
