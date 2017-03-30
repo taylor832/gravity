@@ -19,7 +19,7 @@ public class PendulumRunner {
 	
 
 	// print out difference in displacement in 1 second intervals
-	// for 20 seconds
+	// for 10 seconds
 	int iterations = (int) (1/delta);
 	System.out.println ("analytical vs. numerical displacement (fine, coarse)");
 	for (int second = 1; second <= 10; second++) {
