@@ -1,0 +1,2 @@
+To complete this task I pulled the constant for earth gravity down into the children classes. This was done rather than pushing up to the parent class
+(AbstractPendulum) with the foresight that future children classes will not use the same gravity constant.
